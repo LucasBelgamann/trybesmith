@@ -14,7 +14,7 @@ class LoginService {
   public async getAll(username: string, password: string): Promise<IToken> {
     const result = await this.model.getLogin(username, password);
 
-    const token = jwt.sign({ userId: result.id }, secret, config);
+    const token = jwt.sign({ userId: result[0].id }, secret, config);
     return token as unknown as IToken;
   }
 }

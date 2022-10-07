@@ -8,13 +8,13 @@ class LoginModel {
     this.connection = connection;
   }
 
-  public async getLogin(username: string, password: string): Promise<IUser> {
+  public async getLogin(username: string, password: string): Promise<IUser[]> {
     const [result] = await this.connection.execute(
       'SELECT * FROM Trybesmith.Users WHERE username = ? AND password = ?',
       [username, password],
     );
     
-    return result as unknown as IUser;
+    return result as unknown as IUser[];
   }
 }
 

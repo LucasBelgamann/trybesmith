@@ -18,7 +18,7 @@ class ValidateLogin {
 
     const user = await this.model.getLogin(username, password);
 
-    if (user) {
+    if (user.length > 0) {
       return res.status(401).json({ message: 'Username or password invalid' });
     }
     next();
